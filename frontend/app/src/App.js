@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useContext } from "react";
+import { BrowserRouter as Switch, Route, Redirect } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { AuthContext } from "./AuthContext";
+import { Login } from "./Modules/Login";
+import { Members } from "./Modules/Members";
+import { Chits } from "./Modules/Chits";
+import { Finance } from "./Modules/Finance";
 
-export default App;
+export const App = () => {
+	// const { user } = useContext(AuthContext);
+
+	return (
+		<Switch>
+			<Route path="/login" exact component={Login} />
+			<Route path="/finance" component={Finance} />
+			<Route path="/chits" component={Chits} />
+			<Route path="/members" component={Members} />
+		</Switch>
+	);
+};
